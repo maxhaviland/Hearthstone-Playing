@@ -1,3 +1,3 @@
-back/dist
+back/dist/
+back/node_modules/
 back/.env
-back/node_modules
