@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import Cards from '../components/mainCards';
+import Cards from '../src/components/home/cards';
+import Particles from '../src/components/particles';
 
 export default () => {
 
@@ -9,6 +10,7 @@ export default () => {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Particles />
       <main>
         <Cards />
       </main>
@@ -20,7 +22,7 @@ export default () => {
           rel="noopener noreferrer"
         >
           Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
+          Max Haviland
         </a>
       </footer>
 
@@ -41,6 +43,7 @@ export default () => {
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          z-index: 500;
         }
 
         footer {

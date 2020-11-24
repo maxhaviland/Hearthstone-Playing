@@ -1,82 +1,38 @@
-import NavBar from '../components/navBar'
-import Particles from 'react-particles-js'
-import {ThemeProvider} from '@material-ui/core'
-import theme from '../themes'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Head from 'next/head';
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import theme from '../src/theme';
+import NavBar from '../src/components/navBar'
 
-const App = ({ Component, pageProps }) => {
+export default function MyApp(props) {
+  const { Component, pageProps } = props;
+
+  React.useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
+
   return (
-    <>
-      <NavBar />
-            <Particles 
-              params={{
-            		particles: {
-                color: {
-                  value: '#000000'
-                },
-                number: {
-                  value: 50,
-                  density: {
-                    enable: true,
-                    value_area: 1000
-                  }
-                },
-            			line_linked: {
-            				enable: false,
-                    color: "#000000"
-            			},
-                  size: {
-                    value: 10,
-                    random: true
-                  },
-                  move: {
-                    direction: 'none',
-                    outMode: 'out',
-                    random: true,
-                    speed: 1.5
-                  }
-            		},
-                interactivity: {
-                  events: {
-                    onHover: {
-                      enable: true,
-                      mode: 'connect'
-                    },
-                    onDiv: {
-                      enable: true,
-                      mode: "trail"
-                    }
-                  },
-                  modes: {
-
-                    connect: {
-                      distance: 1000,
-                      radius: 120,
-                      lineLinked: {
-                        opacity: 0.2
-                      }
-                    },
-                    trail: {
-                      quantity: 2,
-                      particles: {
-                        twinkle: true,
-                        collisions: false,
-                        reduceDuplicates: true,
-                        size: 600
-                      }
-                    }
-                  }
-                }
-            	}}
-              style={{
-                width: '100%',
-                position: 'absolute',
-              }}
-            />
+    <React.Fragment>
+      <Head>
+        <title>My page</title>
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+      </Head>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <NavBar />
         <Component {...pageProps} />
       </ThemeProvider>
-    </>
-  )
+    </React.Fragment>
+  );
 }
 
-export default App;
+MyApp.propTypes = {
+  Component: PropTypes.elementType.isRequired,
+  pageProps: PropTypes.object.isRequired,
+};

@@ -43,7 +43,7 @@ const NavBar = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar color="primary" position="fixed">
+      <AppBar component="div" position="fixed">
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
