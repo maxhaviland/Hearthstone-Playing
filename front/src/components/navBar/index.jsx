@@ -6,15 +6,18 @@ import {
   Typography,
   MenuItem,
   Menu,
-  makeStyles
+  makeStyles,
+  Button
 } from '@material-ui/core';
-
+import useLanguage from '../../hooks/useLanguage'
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-
+import { english } from '../../i18n'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    marginBottom: theme.spacing(10),
+    background: 'red'
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -33,6 +36,8 @@ const NavBar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
+  const { setLanguage } = useLanguage();
+
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -41,10 +46,13 @@ const NavBar = () => {
     setAnchorEl(null);
   };
 
+  const execute = () => setLanguage(english);
+
   return (
     <div className={classes.root}>
       <AppBar component="div" position="fixed">
         <Toolbar>
+          <button onClick={execute}>change language</button>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>

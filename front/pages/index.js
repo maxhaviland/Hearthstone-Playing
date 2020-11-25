@@ -1,9 +1,11 @@
 import Head from 'next/head'
-import Cards from '../src/components/home/cards';
+import Cards from '../src/components/home/cards/list';
 import Particles from '../src/components/particles';
-import { Grid } from '@material-ui/core'
-export default () => {
+import { Typography } from '@material-ui/core';
+import useLanguage from '../src/hooks/useLanguage';
 
+export default () => {
+  const { language } = useLanguage();
   return (
     <div className="container">
       <Head>
@@ -12,6 +14,9 @@ export default () => {
       </Head>
       <Particles />
       <main>
+        <Typography variant="h4" paragraph>
+          {language.titles.homeMessage}
+        </Typography>
         <Cards />
       </main>
 
@@ -32,17 +37,10 @@ export default () => {
           padding: 0 0.5rem;
           display: flex;
           flex-direction: column;
-          justify-content: center;
-          align-items: center;
         }
 
         main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+          padding: 0 0 5rem 0;
           z-index: 500;
         }
 

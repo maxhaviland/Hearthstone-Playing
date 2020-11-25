@@ -1,5 +1,5 @@
-export default {
-  locale: 'pt-br',
+export const english = {
+  locale: 'en-us',
   labels: {
     confirm: 'confirmm',
     cancel: 'cancel',
@@ -19,6 +19,7 @@ export default {
     
   },
   titles: {
+    homeMessage: 'welcome',
     deck: 'Community decks.',
     cards: 'Search for your cards and build your deck!'
   },

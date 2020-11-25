@@ -1,21 +1,21 @@
 import React from 'react';
 import Particles from 'react-particles-js';
-import { green } from '@material-ui/core/colors';
+import { blue } from '@material-ui/core/colors';
 
-const CustomParticles = ({ color = green.A400 }) => {
+const CustomParticles = ({ color = blue[900] }) => {
   return (
     <Particles 
       params={{
         particles: {
-        color: {
-          value: color
-        },
-        number: {
-          value: 50,
-          density: {
-            enable: true,
-            value_area: 1000
-          }
+          color: {
+            value: color
+          },
+          number: {
+            value: 50,
+            density: {
+              enable: true,
+              value_area: 1000
+            }
         },
           line_linked: {
             enable: false,

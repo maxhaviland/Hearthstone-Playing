@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTheme, makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search'
 import { Grid, Paper, Card, CardContent, CardMedia } from '@material-ui/core'
-import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOnIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import { VisibilityOff } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,6 +69,9 @@ const useStyles = makeStyles((theme) => ({
 
 const mainCards = () => {
   const classes = useStyles();
+  const [expanded, setExpanded] = useState(true);
+
+  const handleExpanded = () => setExpanded(!expanded); 
 
   const cardData = [
     {
@@ -83,6 +88,8 @@ const mainCards = () => {
     }
   ]
 
+  const Icon = (props) => expanded ? <VisibilityOnIcon {...props}/> : <VisibilityOffIcon {...props}/>
+
   return (
     <>
       <Grid container spacing={5}>
@@ -94,15 +101,19 @@ const mainCards = () => {
             md={6}
             >
             <Card elevation={6}>
-              <CardMedia
-                className={classes.media}
-                image={card.image}
-              />
+              {expanded && (
+                <CardMedia
+                  className={classes.media}
+                  image={card.image}
+                />
+              )}
               <CardContent className={classes.content}>
                 <Typography component="h5" variant="h5">
                   {card.title}
-                  <IconButton className={classes.view}>
-                    <VisibilityIcon fontSize="large" />
+                  <IconButton 
+                    onClick={handleExpanded} 
+                    className={classes.view}>
+                    <Icon fontSize="large" />
                   </IconButton>
                 </Typography>
                 <Typography variant="subtitle1" color="textSecondary" component="p">
