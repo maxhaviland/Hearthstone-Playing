@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Cards from '../src/components/home/cards';
 import Particles from '../src/components/particles';
-
+import { Grid } from '@material-ui/core'
 export default () => {
 
   return (

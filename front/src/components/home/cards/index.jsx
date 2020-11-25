@@ -58,7 +58,10 @@ const useStyles = makeStyles((theme) => ({
   },
   view: {
     float: 'right',
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(1.2)
+  },
+  content: {
+    height: 110
   }
 }));
 
@@ -84,14 +87,18 @@ const mainCards = () => {
     <>
       <Grid container spacing={5}>
         {cardData.map(card => (
-          <Grid item key={card.id} className={classes.root}>
+          <Grid 
+            item 
+            key={card.id} 
+            className={classes.root}
+            md={6}
+            >
             <Card elevation={6}>
-             
               <CardMedia
                 className={classes.media}
                 image={card.image}
               />
-              <CardContent>
+              <CardContent className={classes.content}>
                 <Typography component="h5" variant="h5">
                   {card.title}
                   <IconButton className={classes.view}>
