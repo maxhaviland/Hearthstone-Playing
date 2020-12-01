@@ -7,15 +7,15 @@ import {
   Param,
   Post,
   Put,
-} from '@nestjs/common';
-import { UserService } from './user.service';
-import { User } from './user.schema';
+} from "@nestjs/common";
+import { UserService } from "./user.service";
+import { User } from "./user.schema";
 
-@Controller('user')
+@Controller("user")
 export class UserController {
   constructor(private service: UserService) {}
 
-  @Get('/:username')
+  @Get("/:username")
   getByUsername(@Param() { username }) {
     return this.service.findByUsername(username);
   }
@@ -25,12 +25,12 @@ export class UserController {
     return this.service.create(user);
   }
 
-  @Put('/:id')
+  @Put("/:id")
   update(@Body() user: User, @Param() params) {
     return this.service.update(params.id, user);
   }
 
-  @Delete('/:id')
+  @Delete("/:id")
   remove(@Param() params) {
     return this.service.remove(params.id);
   }

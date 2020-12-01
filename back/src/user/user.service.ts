@@ -1,12 +1,12 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { UserDocument, User } from './user.schema';
-import { Model } from 'mongoose';
-import { exception } from 'console';
+import { Injectable, NotFoundException } from "@nestjs/common";
+import { InjectModel } from "@nestjs/mongoose";
+import { UserDocument, User } from "./user.schema";
+import { Model } from "mongoose";
+import { exception } from "console";
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel('User') private userModel: Model<UserDocument>) {}
+  constructor(@InjectModel("User") private userModel: Model<UserDocument>) {}
 
   async create(user: User) {
     const result = await new this.userModel(user).save();
@@ -17,7 +17,7 @@ export class UserService {
     try {
       return await this.userModel.findById(id);
     } catch (error) {
-      throw new NotFoundException('could not found user.');
+      throw new NotFoundException("could not found user.");
     }
   }
 
@@ -32,7 +32,7 @@ export class UserService {
 
       return user;
     } catch (error) {
-      throw new NotFoundException('could not found user.');
+      throw new NotFoundException("could not found user.");
     }
   }
 
@@ -44,7 +44,7 @@ export class UserService {
       throw error;
     } finally {
       if (!updateUser) {
-        throw new NotFoundException('could not found user.');
+        throw new NotFoundException("could not found user.");
       }
     }
   }

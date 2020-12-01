@@ -27,6 +27,7 @@
     "@nestjs/mongoose": "^7.0.2",
     "@nestjs/platform-express": "^7.5.1",
     "@types/mongoose": "^5.10.0",
+    "axios": "^0.21.0",
     "class-validator": "^0.12.2",
     "dotenv": "^8.2.0",
     "mongoose": "^5.10.13",
