@@ -12,7 +12,7 @@ import {
 import useLanguage from '../../hooks/useLanguage'
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import { english } from '../../i18n'
+import { portuguese } from '../../i18n'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -36,7 +36,7 @@ const NavBar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const { setLanguage } = useLanguage();
+  const { language, setLanguage } = useLanguage();
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -46,10 +46,11 @@ const NavBar = () => {
     setAnchorEl(null);
   };
 
-  const execute = () => setLanguage(english);
+  const execute = () => setLanguage(portuguese);
 
   return (
     <div className={classes.root}>
+    {JSON.stringify(language)}
       <AppBar component="div" position="fixed">
         <Toolbar>
           <button onClick={execute}>change language</button>

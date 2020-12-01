@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { english, portuguese } from '../i18n';
+import { english } from '../i18n';
 
 const useLanguage = () => {
-  const [ language, setLanguage ] = useState(portuguese);
+  const [ language, setLanguage ] = useState(english);
 
   const getLanguageLocalStorage = () => {
     const localStorageLanguage = JSON.parse(window.localStorage.getItem('@language')) || {};
@@ -20,7 +20,7 @@ const useLanguage = () => {
 
   useEffect(() => {
     setLanguageLocalStorage(language)
-  }, [setLanguage]);
+  }, [language]);
 
   return { language, setLanguage };
 };
